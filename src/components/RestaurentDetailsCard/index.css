@@ -1,0 +1,65 @@
+.banner-section {
+  background-image: url('https://res.cloudinary.com/dq92tiimk/image/upload/v1734177605/Tasty-Kitchen-App/Images/Frame_279_cjmrib.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 60vh;
+  width: 100%;
+  color: aliceblue;
+  font-family: DM Sans;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.restaurent-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.card-image {
+  width: 50%;
+  /* height: 280px; */
+  top: 176px;
+  left: 165px;
+  gap: 0px;
+  opacity: 0px;
+  border-radius: 9px;
+}
+.section-heading {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 48px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.card-cuisine {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.card-location {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.meta-info-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.vertical-bar {
+  height: 10vh;
+  background-color: aliceblue;
+  color: aliceblue;
+  width: 1px;
+}

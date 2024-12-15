@@ -1,0 +1,43 @@
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(15, 23, 42, 1);
+  color: aliceblue;
+  flex-direction: column;
+  height: 424px;
+  top: 1268px;
+  gap: 0px;
+  opacity: 0px;
+  text-align: center;
+}
+.footer-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.logo {
+  width: 53px;
+  height: 43px;
+  top: 98px;
+  left: 571px;
+  padding: 2px;
+  gap: 0px;
+  opacity: 0px;
+}
+.social-media-container {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.footer-list {
+  list-style: none;
+}
+.footer-icon {
+  width: 48px;
+  top: 280px;
+  left: 816px;
+  padding: 4px 0px 0px 0px;
+  gap: 0px;
+  opacity: 0px;
+}

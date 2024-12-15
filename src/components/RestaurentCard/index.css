@@ -1,0 +1,71 @@
+.restro-link {
+  text-decoration: none;
+  color: black;
+}
+.restro-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* width: 334px; */
+  /* height: 100px; */
+}
+.restro-card-img {
+  width: 160px;
+  height: 100px;
+  top: 216px;
+  left: 165px;
+  gap: 0px;
+  border-radius: 8px;
+  opacity: 0px;
+}
+.restro-card-info {
+  width: 174px;
+  height: 78px;
+  top: 227px;
+  left: 721px;
+  gap: 0px;
+  opacity: 0px;
+}
+.restro-card-heading {
+  font-family: DM Sans;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+  padding: 0;
+}
+.restro-card-cuisine-title {
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+  padding: 0;
+}
+.restro-card-rating {
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(100, 116, 139, 1);
+  margin: 0;
+  padding: 0;
+}
+.rating {
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18.23px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(15, 23, 42, 1);
+}

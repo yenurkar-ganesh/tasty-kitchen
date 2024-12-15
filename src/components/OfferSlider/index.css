@@ -1,0 +1,10 @@
+.offer-list {
+  list-style: none;
+  width: 1110px;
+  height: 320px;
+  border-radius: 12px;
+}
+.offer-image {
+  width: 100%;
+  border-radius: 12px;
+}
