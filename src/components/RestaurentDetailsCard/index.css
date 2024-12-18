@@ -9,16 +9,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 25px 0px;
+  margin: 0;
 }
 .restaurent-card {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  margin: 0;
 }
 .card-image {
-  width: 50%;
-  /* height: 280px; */
+  width: 445px;
+  height: 280px;
   top: 176px;
   left: 165px;
   gap: 0px;
@@ -62,4 +65,13 @@
   background-color: aliceblue;
   color: aliceblue;
   width: 1px;
+}
+.fooditem-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 2.5rem auto;
+  width: 85%;
 }

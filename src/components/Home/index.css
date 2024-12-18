@@ -17,7 +17,7 @@
   margin: 0px auto;
 }
 .restaurent-section {
-  margin-top: 8rem;
+  margin-top: 4rem;
 }
 .meta-heading {
   font-family: DM Sans;
@@ -116,4 +116,34 @@
   gap: 40px;
   justify-content: center;
   margin: 4rem 0px;
+}
+.search-section {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  margin: 0px auto;
+}
+.search-input {
+  padding: 10px 26px;
+  border: 2px solid lightgray;
+  border-radius: 9px;
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  align-self: center;
+  margin-top: 5rem;
+}
+.sort-funtionality {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: DM Sans;
+  font-size: 16px;
+}
+.sort-options {
+  background-color: rgba(241, 245, 249, 1);
+}
+.sort-options:hover {
+  background-color: rgba(241, 245, 249, 1);
 }

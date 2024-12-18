@@ -34,12 +34,15 @@ class RestaurentDetailsCard extends Component {
         console.log(data)
         this.setState({restaurentDetails: data})
       } catch (error) {
-        console.error('Error while fatching the Details', error)
+        console.error('Error while fetching the details', error)
       }
     }
   }
+
   render() {
     const {restaurentDetails} = this.state
+    const foodItems = restaurentDetails.food_items || []
+
     return (
       <div className="detailed-card-container">
         <Navbar />
@@ -59,7 +62,7 @@ class RestaurentDetailsCard extends Component {
                   <p>⭐ {restaurentDetails.rating} </p>
                   <p>{restaurentDetails.reviews_count}+ Ratings </p>
                 </div>
-                <span className="vertical-bar"></span>
+                <span className="vertical-bar" />
                 <div className="cost-meta-info">
                   <p>₹ {restaurentDetails.cost_for_two} </p>
                   <p>Cost for two</p>
@@ -68,16 +71,15 @@ class RestaurentDetailsCard extends Component {
             </div>
           </div>
         </div>
-        <section className="sub-container">
-          <ul className="restaurent-menu-items-section">
-            {restaurentDetails.food_items.map(eachItem => (
-              <FoodItem key={eachItem.id} eachItem={eachItem} />
-            ))}
-          </ul>
-        </section>
+        <ul className="fooditem-container">
+          {foodItems.map(item => (
+            <FoodItem key={item.id} foodItem={item} />
+          ))}
+        </ul>
         <Footer />
       </div>
     )
   }
 }
+
 export default RestaurentDetailsCard

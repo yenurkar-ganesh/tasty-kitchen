@@ -13,10 +13,24 @@ import 'slick-carousel/slick/slick-theme.css'
 const jwtToken = Cookies.get('jwt_token')
 const ITEMS_PER_PAGE = 9
 
+const sortByOptions = [
+  {
+    id: 0,
+    displayText: 'Highest',
+    value: 'Highest',
+  },
+  {
+    id: 2,
+    displayText: 'Lowest',
+    value: 'Lowest',
+  },
+]
+
 class Home extends Component {
   state = {
     offerList: [],
     initialRestaurentList: [],
+    userSearchList: [],
     currentPage: 0,
   }
 
@@ -25,8 +39,27 @@ class Home extends Component {
     this.getRestaurentList()
   }
 
+  updatetheString = data =>
+    data.restaurants.map(eachRest => ({
+      id: eachRest.id,
+      costForTwo: eachRest.cost_for_two,
+      cuisine: eachRest.cuisine,
+      groupByTime: eachRest.group_by_time,
+      hasOnlineDelivery: eachRest.has_online_delivery,
+      hasTableBooking: eachRest.has_table_booking,
+      imageUrl: eachRest.image_url,
+      isDeliveringNow: eachRest.is_delivering_now,
+      location: eachRest.location,
+      menuType: eachRest.menu_type,
+      name: eachRest.name,
+      opensAt: eachRest.opens_at,
+      userRating: eachRest.user_rating,
+    }))
+
   getRestaurentList = async () => {
-    const apiUrl = 'https://apis.ccbp.in/restaurants-list?offset=0&limit=30'
+    // const apiUrl = 'https://apis.ccbp.in/restaurants-list?offset=0&limit=30'
+    const apiUrl =
+      'https://apis.ccbp.in/restaurants-list?offset=0&limit=60&sort_by_rating=Highest'
     const options = {
       headers: {Authorization: `Bearer ${jwtToken}`},
       method: 'GET',
@@ -37,22 +70,12 @@ class Home extends Component {
         const response = await fetch(apiUrl, options)
         if (response.ok) {
           const data = await response.json()
-          const updatedData = data.restaurants.map(eachRest => ({
-            id: eachRest.id,
-            costForTwo: eachRest.cost_for_two,
-            cuisine: eachRest.cuisine,
-            groupByTime: eachRest.group_by_time,
-            hasOnlineDelivery: eachRest.has_online_delivery,
-            hasTableBooking: eachRest.has_table_booking,
-            imageUrl: eachRest.image_url,
-            isDeliveringNow: eachRest.is_delivering_now,
-            location: eachRest.location,
-            menuType: eachRest.menu_type,
-            name: eachRest.name,
-            opensAt: eachRest.opens_at,
-            userRating: eachRest.user_rating,
-          }))
-          this.setState({initialRestaurentList: updatedData})
+          const updatedData = this.updatetheString(data)
+          this.setState({
+            initialRestaurentList: updatedData,
+            userSearchList: updatedData,
+          })
+
           console.log(updatedData)
         }
       } catch (error) {
@@ -85,14 +108,38 @@ class Home extends Component {
     this.setState({currentPage: selected})
   }
 
+  userInputHandler = async ev => {
+    const userInput = ev.target.value.trim()
+    const url = `https://apis.ccbp.in/restaurants-list?search=${userInput}`
+    const options = {
+      headers: {Authorization: `Bearer ${jwtToken}`},
+      method: 'GET',
+    }
+    try {
+      const response = await fetch(url, options)
+      if (response.ok) {
+        const data = await response.json()
+        const updatedData = this.updatetheString(data)
+        this.setState({userSearchList: updatedData})
+      }
+    } catch (error) {
+      console.error(`An error occurred while fetching offers`)
+    }
+  }
+
   render() {
-    const {offerList, initialRestaurentList, currentPage} = this.state
+    const {
+      offerList,
+      initialRestaurentList,
+      userSearchList,
+      currentPage,
+    } = this.state
     const offset = currentPage * ITEMS_PER_PAGE
-    const paginatedRestaurants = initialRestaurentList.slice(
+    const paginatedRestaurants = userSearchList.slice(
       offset,
       offset + ITEMS_PER_PAGE,
     )
-    const pageCount = Math.ceil(initialRestaurentList.length / ITEMS_PER_PAGE)
+    const pageCount = Math.ceil(userSearchList.length / ITEMS_PER_PAGE)
 
     return (
       <div className="container">
@@ -102,6 +149,14 @@ class Home extends Component {
             <div className="offer-slider-section">
               <OfferSlider offerList={offerList} />
             </div>
+            <div className="search-section">
+              <input
+                className="search-input"
+                placeholder="Search your favourite restaurants..."
+                type="search"
+                onChange={this.userInputHandler}
+              />
+            </div>
             <div className="restaurent-section">
               <div className="header-section">
                 <h1 className="meta-heading">Popular Restaurants</h1>
@@ -110,7 +165,13 @@ class Home extends Component {
                     Select Your favourite restaurant special dish and make your
                     day happy...
                   </p>
-                  <p>Sort by Lowest</p>
+                  <select className="sort-funtionality">
+                    {sortByOptions.map(eachoption => (
+                      <option className="sort-options" key={eachoption.id}>
+                        {eachoption.displayText}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <hr className="line" />
